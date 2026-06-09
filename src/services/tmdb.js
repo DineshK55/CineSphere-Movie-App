@@ -105,7 +105,17 @@ export const tmdb = {
 
   // Check if offline/demo mode is active
   isDemoMode: () => {
-    return localStorage.getItem("cine_demo_mode") === "true" || !tmdb.getApiKey();
+    const key = tmdb.getApiKey();
+    if (!key) return true; // No key at all = demo mode
+
+    const storedDemo = localStorage.getItem("cine_demo_mode");
+    if (storedDemo === "true") {
+      // Only stay in demo mode if they have their own personal key and chose to override it.
+      // Otherwise, if they are a guest using the default fallback key, show live movies.
+      const storedKey = localStorage.getItem("cine_tmdb_api_key");
+      return !!storedKey;
+    }
+    return false;
   },
 
   // Set demo mode active state
