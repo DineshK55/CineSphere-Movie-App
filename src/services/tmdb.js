@@ -100,7 +100,7 @@ export const tmdb = {
     if (envKey && envKey !== "YOUR_TMDB_API_KEY") return envKey;
 
     // 3. Fallback to your personal key so others can view it instantly without setting a key
-    return "7c21cbe86136512b547958adaf026881";
+    return "7e21cbe86136512b547958adaf026881";
   },
 
   // Check if offline/demo mode is active
