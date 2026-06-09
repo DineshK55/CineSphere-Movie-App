@@ -99,7 +99,8 @@ export const tmdb = {
     const envKey = import.meta.env.VITE_TMDB_API_KEY;
     if (envKey && envKey !== "YOUR_TMDB_API_KEY") return envKey;
 
-    return null;
+    // 3. Fallback to your personal key so others can view it instantly without setting a key
+    return "7c21cbe86136512b547958adaf026881";
   },
 
   // Check if offline/demo mode is active
